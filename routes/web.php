@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,5 +17,5 @@ Route::get('users', function() {
 });
 
 Route::get('blogs', function() {
-    return User::select('id', 'title', 'content')->all();
+    return Blog::select('id', 'title', 'content')->get();
 });
