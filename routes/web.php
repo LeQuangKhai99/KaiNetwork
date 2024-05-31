@@ -12,10 +12,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('users', function() {
-    return User::select('id', 'name', 'email')->get();
+Route::get('users', function(Request $request) {
+    return User::select('id', 'name', 'email')->paginate(request()->limit || 10);
 });
 
 Route::get('blogs', function() {
-    return Blog::select('id', 'title', 'content')->get();
+    return Blog::select('id', 'title', 'content')->paginate(request()->limit || 10);
 });
